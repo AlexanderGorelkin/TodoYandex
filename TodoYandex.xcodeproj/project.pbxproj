@@ -14,6 +14,12 @@
 		11E0369E2C260FDA00821251 /* TodoYandexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E0369D2C260FDA00821251 /* TodoYandexTests.swift */; };
 		11E036A82C260FDA00821251 /* TodoYandexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E036A72C260FDA00821251 /* TodoYandexUITests.swift */; };
 		11E036AA2C260FDA00821251 /* TodoYandexUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E036A92C260FDA00821251 /* TodoYandexUITestsLaunchTests.swift */; };
+		11E036B92C2610A700821251 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E036B82C2610A700821251 /* TodoItem.swift */; };
+		11E036BB2C2610CC00821251 /* TodoItem+Seeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E036BA2C2610CC00821251 /* TodoItem+Seeds.swift */; };
+		11E036BE2C2610F700821251 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E036BD2C2610F700821251 /* FileCache.swift */; };
+		11E036C02C26110D00821251 /* FileCacheError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E036BF2C26110D00821251 /* FileCacheError.swift */; };
+		11E036C32C26113600821251 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E036C22C26113600821251 /* String+Extensions.swift */; };
+		11E036C82C2611B100821251 /* TodoItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E036C72C2611B100821251 /* TodoItemTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +50,12 @@
 		11E036A32C260FDA00821251 /* TodoYandexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoYandexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11E036A72C260FDA00821251 /* TodoYandexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoYandexUITests.swift; sourceTree = "<group>"; };
 		11E036A92C260FDA00821251 /* TodoYandexUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoYandexUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		11E036B82C2610A700821251 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		11E036BA2C2610CC00821251 /* TodoItem+Seeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoItem+Seeds.swift"; sourceTree = "<group>"; };
+		11E036BD2C2610F700821251 /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
+		11E036BF2C26110D00821251 /* FileCacheError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCacheError.swift; sourceTree = "<group>"; };
+		11E036C22C26113600821251 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		11E036C72C2611B100821251 /* TodoItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,9 +106,12 @@
 		11E0368B2C260FD700821251 /* TodoYandex */ = {
 			isa = PBXGroup;
 			children = (
-				11E0368C2C260FD700821251 /* TodoYandexApp.swift */,
-				11E0368E2C260FD700821251 /* ContentView.swift */,
-				11E036902C260FD900821251 /* Assets.xcassets */,
+				11E036C12C26112600821251 /* Extensions */,
+				11E036BC2C2610E700821251 /* Cache */,
+				11E036B72C26109B00821251 /* Models */,
+				11E036C62C26116300821251 /* Application */,
+				11E036C42C26114300821251 /* View */,
+				11E036C52C26115B00821251 /* Resources */,
 				11E036922C260FD900821251 /* Preview Content */,
 			);
 			path = TodoYandex;
@@ -125,6 +140,57 @@
 				11E036A92C260FDA00821251 /* TodoYandexUITestsLaunchTests.swift */,
 			);
 			path = TodoYandexUITests;
+			sourceTree = "<group>";
+		};
+		11E036B72C26109B00821251 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				11E036B82C2610A700821251 /* TodoItem.swift */,
+				11E036BA2C2610CC00821251 /* TodoItem+Seeds.swift */,
+				11E036C72C2611B100821251 /* TodoItemTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		11E036BC2C2610E700821251 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				11E036BD2C2610F700821251 /* FileCache.swift */,
+				11E036BF2C26110D00821251 /* FileCacheError.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		11E036C12C26112600821251 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				11E036C22C26113600821251 /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		11E036C42C26114300821251 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				11E0368E2C260FD700821251 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		11E036C52C26115B00821251 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				11E036902C260FD900821251 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		11E036C62C26116300821251 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				11E0368C2C260FD700821251 /* TodoYandexApp.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +324,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				11E0368F2C260FD700821251 /* ContentView.swift in Sources */,
+				11E036C32C26113600821251 /* String+Extensions.swift in Sources */,
+				11E036B92C2610A700821251 /* TodoItem.swift in Sources */,
 				11E0368D2C260FD700821251 /* TodoYandexApp.swift in Sources */,
+				11E036C02C26110D00821251 /* FileCacheError.swift in Sources */,
+				11E036BE2C2610F700821251 /* FileCache.swift in Sources */,
+				11E036BB2C2610CC00821251 /* TodoItem+Seeds.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11E036C82C2611B100821251 /* TodoItemTests.swift in Sources */,
 				11E0369E2C260FDA00821251 /* TodoYandexTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
