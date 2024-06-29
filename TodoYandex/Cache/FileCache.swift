@@ -8,14 +8,10 @@
 import Foundation
 
 final class FileCache {
-    private(set) var todoItems: [TodoItem] = []
-    private let fileManager = FileManager.default
+    @Published private(set) var todoItems: [TodoItem] = []
     private let filesPath: String = "TodoItems"
     private let filesExtension: String = "json"
     
-    init() throws {
-        try loadAllItems()
-    }
     
     func addItem(new item: TodoItem) throws {
         if !todoItems.contains(where: { $0.id == item.id }) {
@@ -58,7 +54,7 @@ final class FileCache {
     }
     
     private func createBaseURL() throws -> URL {
-        guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { throw FileCacheError.errorToFetchPath }
+        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { throw FileCacheError.errorToFetchPath }
         return documentDirectory.appendingPathComponent(filesPath).appendingPathExtension(filesExtension)
     }
 }
