@@ -5,7 +5,7 @@
 //  Created by Александр Горелкин on 21.06.2024.
 //
 
-import Foundation
+import SwiftUI
 
 enum Importance: String, CaseIterable {
     case low = "Неважная"
@@ -13,8 +13,9 @@ enum Importance: String, CaseIterable {
     case high = "Важная"
 }
 
+
 /// Иммутабельная структура TodoItem
-struct TodoItem: Equatable {
+struct TodoItem: Identifiable, Equatable, Hashable {
     /// Уникальный идентификатор
     var id: String
     /// Строковое поле
@@ -29,6 +30,8 @@ struct TodoItem: Equatable {
     var deadline: Date?
     /// Дата изменения
     var updatedAt: Date?
+    /// Цвет заметки
+    let hexColor: String?
     
     init(
         id: String = UUID().uuidString,
@@ -37,7 +40,8 @@ struct TodoItem: Equatable {
         createdAt: Date = Date(),
         importance: Importance = .normal,
         deadline: Date? = nil,
-        updatedAt: Date? = nil
+        updatedAt: Date? = nil,
+        hexColor: String? = nil
     ) {
         self.id = id
         self.text = text
@@ -46,6 +50,7 @@ struct TodoItem: Equatable {
         self.importance = importance
         self.deadline = deadline
         self.updatedAt = updatedAt
+        self.hexColor = hexColor
     }
 }
 // MARK: JSON конвертеры
@@ -60,6 +65,7 @@ extension TodoItem {
         let importance = (json["importance"] as? String).flatMap(Importance.init(rawValue:)) ?? .normal
         let deadline = (json["deadline"] as? String)?.toDate()
         let updatedAt = (json["updatedAt"] as? String)?.toDate()
+        let hexColor = json["hexColor"] as? String
         
         return .init(
             id: id,
@@ -68,7 +74,8 @@ extension TodoItem {
             createdAt: createdAt,
             importance: importance,
             deadline: deadline,
-            updatedAt: updatedAt
+            updatedAt: updatedAt,
+            hexColor: hexColor
         )
     }
     var json: Any {
@@ -85,6 +92,9 @@ extension TodoItem {
         
         if let deadline = deadline {
             dictionary["deadline"] = deadline
+        }
+        if let hexColor = hexColor {
+            dictionary["hexColor"] = hexColor
         }
         return dictionary
     }
@@ -103,6 +113,7 @@ extension TodoItem {
             let importance = Importance(rawValue: lineComponents[4]) ?? .normal
             let deadline = lineComponents[5].toDate()
             let updatedAt = lineComponents[6].toDate()
+            let hexColor = lineComponents[7]
             todoItems.append(
                 .init(
                     id: id,
@@ -111,10 +122,41 @@ extension TodoItem {
                     createdAt: createdAt,
                     importance: importance,
                     deadline: deadline,
-                    updatedAt: updatedAt
+                    updatedAt: updatedAt,
+                    hexColor: hexColor
                 )
             )
         }
         return todoItems
+    }
+}
+extension TodoItem {
+    static func newItem() -> TodoItem {
+        return TodoItem(text: "",
+                        importance: .high)
+    }
+}
+extension Importance {
+    var image: Image {
+        switch self {
+        case .low :
+            return R.Images.importanceLow.image
+        case .normal:
+            return Image(systemName: "circle")
+        case .high:
+            return R.Images.importanceHigh.image
+        }
+    }
+}
+extension Importance {
+    var title: String {
+        switch self {
+        case .low :
+            return "low"
+        case .normal:
+            return "norm"
+        case .high:
+            return "high"
+        }
     }
 }
